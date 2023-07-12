@@ -6,6 +6,7 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 const routes = require('./routes');
 const routesAuth = require('./routes/auth');
+const routesDispatch = require('./routes/dispatch');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', routes);
 app.use('/auth', routesAuth);
+app.use('/api', routesDispatch);
 
 
 mongoose.connect(process.env.DATABASE_URI, {
