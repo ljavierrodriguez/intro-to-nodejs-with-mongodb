@@ -22,6 +22,19 @@ exports.listDispatch = async (req, res) => {
     }
 
 }
+
+exports.getDispathById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const dispatch = await Dispatch.findById(id);
+        res.status(200).json(dispatch);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
+
 exports.storeDispatch = async (req, res) => {
     try {
         //const { invoices_id, client, amount, weight, date_dispatch, method, users_id, office } = req.body;
